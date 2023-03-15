@@ -1,0 +1,24 @@
+﻿@page "/tasks/details/{id:int}"
+@model ToDoList.Pages.Tasks.TaskDetailsModel
+<h1>Task details</h1>
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                @Model.DetailsToDoTask.Name
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Description: @Model.DetailsToDoTask.Description</li>
+                <li class="list-group-item">Owner: @Model.DetailsToDoTask.Owner.Name</li>
+                <li class="list-group-item">AssignedDate: @Model.DetailsToDoTask.AssignedDate</li>
+                <li class="list-group-item">Category: @Model.DetailsToDoTask.Category.CategoryName</li>
+                <li class="list-group-item">Status: @Model.DetailsToDoTask.Status</li>
+            </ul>
+            <div class="card-footer">
+                <a asp-page="EditTask" asp-route-Id="@Model.DetailsToDoTask.Id" class="btn btn-warning">Edit</a>
+                <a asp-page="DeleteTask" asp-route-Id="@Model.DetailsToDoTask.Id" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

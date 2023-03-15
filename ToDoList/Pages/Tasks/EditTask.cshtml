@@ -1,0 +1,52 @@
+﻿@page "/tasks/edit/{id:int}"
+@model ToDoList.Pages.Tasks.EditTaskModel
+@using ToDoList.Data.Models
+<h1>Edit task</h1>
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="ToDoTask.Name">Name</label>
+                <input asp-for="ToDoTask.Name" class="form-control" />
+                <span asp-validation-for="ToDoTask.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ToDoTask.Description">Description</label>
+                <textarea asp-for="ToDoTask.Description" class="form-control" ></textarea>
+                <span asp-validation-for="ToDoTask.Description" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="ToDoTask.OwnerId">Owner</label>
+                <select class="form-control" asp-for="ToDoTask.OwnerId" 
+                asp-items="@((IEnumerable<SelectListItem>)TempData["Owners"])">
+                    <option value="">-- Select an owner --</option>
+                </select>
+                <span asp-validation-for="ToDoTask.OwnerId" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="ToDoTask.CategoryId">Owner</label>
+                <select class="form-control" asp-for="ToDoTask.CategoryId"
+                asp-items="@((IEnumerable<SelectListItem>)TempData["Categories"])">
+                    <option value="">-- Select a category --</option>
+                </select>
+                <span asp-validation-for="ToDoTask.CategoryId" class="text-danger"></span>
+            </div>
+
+
+            <div class="mb-3">
+                <label asp-for="ToDoTask.Status">Status</label>
+                <select asp-for="ToDoTask.Status" class="form-control"
+                        asp-items="Html.GetEnumSelectList<StatusEnum>()">
+                    
+                </select>
+                <span asp-validation-for="ToDoTask.Status" class="text-danger"></span>
+            </div>
+
+            <button class="btn btn-success">Update</button>
+        </form>
+
+    </div>
+</div>
